@@ -1,4 +1,5 @@
 import { Component } from '@Core/component';
+import { logDOM } from '@testing-library/react';
 
 type CartItemInfo = {
     name: string;
@@ -44,6 +45,8 @@ export class CartItem extends Component {
 
     public async getQuantity(): Promise<number> {
         const [quantityElement] = await this.element.waitForQuerySelector(SELECTORS.quantity);
+       //console.log(logDOM(document));
+
         return Number(quantityElement.textContent);
     }
 

@@ -1,5 +1,6 @@
 import type { CartItem } from '@Components/cartPage/cartList/cartItem/cartItem';
 import { CartPageContainer } from '@Components/cartPage/cartPage';
+import { logDOM } from '@testing-library/react';
 
 const INITIAL_ITEM_COUNT = 5;
 
@@ -49,8 +50,16 @@ describe('Item Quantity', () => {
     test("decreasing quantity to zero shouldn't be possible", async () => {
         // Write your own test - negative quantity :)
 
+        await item.removeOne();
+        await item.removeOne();
+        await item.removeOne();
+        await item.removeOne();
+        await item.removeOne();
+        await item.removeOne();
+
         reporter.startStep('Item quantity should be one');
         expect(await item.getQuantity()).toBe(1);
+
         reporter.endStep();
     });
 });
